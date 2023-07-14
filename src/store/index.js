@@ -14,7 +14,24 @@ export default new Vuex.Store({
   getters: {
     mostrarcarrito(state){
       return state.carritouuu
-    }
+    },
+    
+    carritoProductos(state){
+      return state.carritouuu.map(prod=>{
+      let myProd=prod
+      myProd.total=prod.count*prod.price
+      return myProd
+  })
+
+    },
+    totalCarro(state,getters){
+      return getters.carritoProductos.reduce((total,product)=>{
+      return total+product.total
+      },0)
+    },
+
+
+
   },
 
   mutations: {

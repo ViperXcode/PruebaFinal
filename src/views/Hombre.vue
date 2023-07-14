@@ -1,11 +1,11 @@
 <template>
-    <v-container>
-        <h1> Vestuario Hombre</h1>
-            <v-row>
-                <v-col cols="3">
+    <v-container cols="12" sm="6" md="3">
+        <h1 class="text-center mb-5"> Vestuario Hombre</h1>
+            <v-row justify="center">
+                <v-col cols="12" sm="6" md="3">
                     <carritou></carritou>
                 </v-col>
-                    <v-col cols="9" v-for="item in ropashombre" :key="item.id">
+                    <v-col cols="12" sm="6" md="3" v-for="item in ropashombre" :key="item.id">
                         <tarjetasc :item="item"> </tarjetasc>
                     </v-col>
 

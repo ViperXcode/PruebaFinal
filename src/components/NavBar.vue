@@ -29,12 +29,15 @@
             <v-list-item-title>Inicio</v-list-item-title>
           </v-list-item>
 
-          <v-list-item>
+
+          <v-list-item v-for="route in routes" :key="route.name" :to="route.path" :disabled="currentRoute==route.name">
             <v-list-item-icon>
-              <v-icon>mdi-account</v-icon>
+              <v-icon>{{route.icon}}</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Acerca de nosotros</v-list-item-title>
+            <v-list-item-title>{{route.title}}</v-list-item-title>
           </v-list-item>
+
+
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
@@ -53,14 +56,53 @@ export default {
                   {
                     icon:'mdi-home',
                     title:'Inicio',
+                    path: '/',
+                  },
+
+                  {
+                    icon:'mdi-face-outline',
+                    title:'Ropa Hombre',
+                    path: '/Hombre',
+                  },
+
+                  {
+                    icon:'mdi-face-woman',
+                    title:'Ropa Mujer',
                     name:'Home'
+                  },
+
+                  {
+                    icon:'mdi-ipod',
+                    title:'Electrónica',
+                    name:'Home'
+                  },
+
+                  {
+                    icon:'mdi-cart-arrow-right',
+                    title:'Carrito',
+                    name:'Home'
+                  },
+
+                  {
+                    icon:'mdi-account',
+                    title:'Contactanos',
+                    path: '/about',
                   },
                 ]
               }
     },
+
+    computed: {
+            currentRoute(){
+            return this.$route.name
+            }
+    },
     
-    // computed: {},
-    //methods: {}
+    methods: {
+      redirectTo(nameRoute){
+        this.$router.push({name:nameRoute})
+      }
+    }
     // watch: {},
     // components: {},
     // mixins: [],
